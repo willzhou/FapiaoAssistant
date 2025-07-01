@@ -8,7 +8,11 @@ from models import Invoice
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 from .base_extractor import BaseExtractor
 
-import magic
+try:
+    import magic
+except Exception:
+    import puremagic as magic
+    
 from pdf2image import convert_from_bytes
 from pdf2image.exceptions import PDFInfoNotInstalledError, PDFPageCountError, PDFSyntaxError
 import pdfplumber
