@@ -1,0 +1,105 @@
+# API配置
+api_config:
+  api_key: "EMPTY"
+  base_url: "http://192.168.31.139:11434"
+
+# OLLAMA模型配置 (保留原注释和结构)
+ollama_model_options:
+  # LLM 语言模型
+  "qwen3:1.7B":
+    model_path: "qwen3:1.7B"
+    description: "小规模文本模型"
+    type: "text"
+  
+  "qwen2.5:0.5B":
+    model_path: "qwen2.5:0.5B"
+    description: "小规模文本模型"
+    type: "text"
+  
+  "gemma3:1b":
+    model_path: "gemma3:1b"
+    description: "小规模文本模型"
+    type: "text"
+  
+  "gemma3:12b":
+    model_path: "gemma3:12b"
+    description: "小规模文本模型"
+    type: "text"
+  
+  # VLM 视觉语言模型  
+  "qwen2.5vl:7b":
+    model_path: "qwen2.5vl:7b"
+    description: "小规模视觉文本模型"
+    type: "visual"
+
+  "qwen2.5vl:3b":
+    model_path: "qwen2.5vl:3b"
+    description: "小规模视觉文本模型"
+    type: "visual"
+      
+  "llava":
+    model_path: "llava"
+    description: "小规模视觉文本模型"
+    type: "visual"
+
+# VLLM模型配置
+vllm_model_options:
+  "Qwen2.5-VL-3B-Instruct":
+    model_path: "Qwen/Qwen2.5-VL-3B-Instruct"
+    description: "小规模视觉文本模型"
+    type: "visual"
+  
+  "Qwen3-0.6B":
+    model_path: "Qwen/Qwen3-0.6B"
+    description: "小规模文本模型"
+    type: "text"
+  
+  "Qwen2.5-0.5B-Instruct":
+    model_path: "Qwen/Qwen2.5-0.5B-Instruct"
+    description: "小规模文本模型"
+    type: "text"
+
+# 默认使用OLLAMA模型
+default_model: "ollama"
+
+# 企业后缀词库
+company_suffixes:
+  - "公司"
+  - "中心"
+  - "厂"
+  - "店"
+  - "版社"
+  - "报社"
+  - "行"
+  - "所"
+  - "院"
+  - "集团"
+  - "联盟"
+  - "协会"
+  - "基金会"
+  - "委员会"
+  - "有限合伙"
+  - "普通合伙"
+  - "特殊普通合伙"
+  - "分公司"
+  - "办事处"
+  - "分所"
+  - "科技"
+  - "股份"
+
+# 发票字段模板
+default_invoice_fields:
+  发票号码: null
+  开票日期: null
+  购方名称: null
+  销方名称: null
+  项目名称: null
+  金额: null
+  税额: null
+  价税合计: null
+
+# 支持的文件类型
+supported_file_types:
+  - "application/pdf"
+  - "image/png"
+  - "image/jpeg"
