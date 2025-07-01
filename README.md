@@ -10,10 +10,10 @@
 
 ## 软件截图
 
- ![首页界面](blob/main/assets/chrome_home.png)
- ![文件上传](blob/main/assets/chrome_uploaded.png)
- ![识别结果](blob/main/assets/chrome_result.png)
- ![容器部署](blob/main/assets/powershell_docker.png)
+ ![首页界面](./assets/chrome_home.png)
+ ![文件上传](./assets/chrome_uploaded.png)
+ ![识别结果](./assets/chrome_result.png)
+ ![容器部署](./assets/powershell_docker.png)
 
 ## 功能特性
 
