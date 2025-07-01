@@ -241,7 +241,7 @@ class VLMExtractor(BaseExtractor):
             data["prompt"] = f"{prompt}\n\n请处理下面的输入文本：\n#输入文本:\n{inputs[0]}。\n\n输出：{{result}}"
         else:
             data["images"] = [
-                base64.b64encode(img) # .decode('utf-8') 
+                base64.b64encode(img).decode('utf-8') 
                 for img in inputs
             ]
         try:
