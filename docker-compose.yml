@@ -3,8 +3,8 @@ version: '3.8'
 services:
   app:
     build: .  # 使用Dockerfile构建
-    image: fapiao-app:latest
-    container_name: fapiao-app
+    image: fapiao-ass:latest
+    container_name: fapiao-ass
     ports:
       - "8501:8501"
     volumes:
