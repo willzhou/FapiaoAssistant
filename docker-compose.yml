@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build: .  # 使用Dockerfile构建
+    image: fapiao-app:latest
+    container_name: fapiao-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./:/app
+      - pip_cache:/root/.cache/pip
+    working_dir: /app
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - SKIP_TORCH_INSTALL=true  # 新增控制变量
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # 让容器能解析该域名
+    # 如果不用Dockerfile，改用此entrypoint：
+    # entrypoint: |
+    #   bash -c "apt-get update && \
+    #            apt-get install -y --no-install-recommends libmagic1 && \
+    #            rm -rf /var/lib/apt/lists/* && \
+    #            pip install --upgrade pip && \
+    #            if [ \"$SKIP_TORCH_INSTALL\" = \"true\" ]; then \
+    #              pip install $(grep -v 'torch' requirements.txt); \
+    #            else \
+    #              pip install -r requirements.txt; \
+    #            fi && \
+    #            streamlit run app.py"
+    entrypoint: ["streamlit", "run", "app.py"]
+
+volumes:
+  pip_cache:
