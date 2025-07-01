@@ -7,6 +7,12 @@ from utils.display_utils import show_results, chat_interface
 from models import Invoice
 from config import logger
 
+import tomli
+from pathlib import Path
+def get_version():
+    with open(Path(__file__).parent.parent / "pyproject.toml", "rb") as f:
+        return tomli.load(f)["tool"]["poetry"]["version"]
+    
 def init_extractor() -> Union[RegexExtractor, LLMExtractor, VLMExtractor]:
     """根据用户选择初始化提取器"""
     # 模式选择
@@ -128,12 +134,12 @@ def main():
     # 在侧边栏添加关于信息
     st.sidebar.markdown("---")
     with st.sidebar.expander("ℹ️ 关于本系统"):
-        st.markdown("""
+        st.markdown(f"""
         <style>
-            .small-text {
+            .small-text {{
                 font-size: 0.9em !important;
                 line-height: 1.3 !important;
-            }
+            }}
         </style>
         <div class="small-text">
             开发作者：<br>
@@ -141,7 +147,7 @@ def main():
             遵循协议：<br>
             MIT license<br><br>
             系统版本：<br> 
-            v0.1<br><br>
+            v{get_version()}<br><br>
             <a href="https://github.com/willzhou/FapiaoAssistant">查看源码</a>
         </div>
         """, unsafe_allow_html=True)
