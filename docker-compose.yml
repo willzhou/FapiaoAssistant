@@ -5,6 +5,15 @@ services:
     build: .  # 使用Dockerfile构建
     image: fapiao-ass:latest
     container_name: fapiao-ass
+    command: /bin/bash
+    deploy:
+      resources:
+        limits:
+          cpus: "8"       # 限制最多 2 个 CPU
+          memory: 16G      # 限制内存 4GB
+        reservations:
+          cpus: "2"     # 至少保留 0.5 个 CPU
+          memory: 8G      # 至少保留 1GB 内存
     ports:
       - "8501:8501"
     volumes:

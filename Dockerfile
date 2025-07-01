@@ -1,5 +1,5 @@
 # ./Dockerfile
-FROM python:3.13-slim
+FROM python:3.13.2-slim
 
 # 安装系统依赖
 RUN apt-get update && \
