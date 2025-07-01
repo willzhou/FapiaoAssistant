@@ -10,10 +10,10 @@
 
 ## 软件截图
 
- ![首页界面](./assets/chrome_home.png)
- ![文件上传](./assets/chrome_uploaded.png)
- ![识别结果](./assets/chrome_result.png)
- ![容器部署](./assets/powershell_docker.png)
+ ![首页界面](https://raw.githubusercontent.com/willzhou/FapiaoAssistant/main/assets/chrome_home.png)
+ ![文件上传](https://raw.githubusercontent.com/willzhou/FapiaoAssistant/main/assets/chrome_uploaded.png)
+ ![识别结果](https://raw.githubusercontent.com/willzhou/FapiaoAssistant/main/assets/chrome_result.png)
+ ![容器部署](https://raw.githubusercontent.com/willzhou/FapiaoAssistant/main/assets/powershell_docker.png)
 
 ## 功能特性
 
