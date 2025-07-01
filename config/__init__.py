@@ -2,6 +2,7 @@ import yaml
 import logging
 from pathlib import Path
 from typing import Dict, Any, List
+import os
 
 # 保持原有logger配置
 logger = logging.getLogger(__name__)
@@ -17,6 +18,9 @@ _config = load_config()
 
 # 保持原有变量名和结构
 API_CONFIG = _config['api_config']
+API_CONFIG["api_key"] =  os.getenv("API_KEY", API_CONFIG["api_key"])
+API_CONFIG["base_url"] =  os.getenv("OLLAMA_BASE_URL", API_CONFIG["base_url"])
+
 OLLAMA_MODEL_OPTIONS = _config['ollama_model_options']
 VLLM_MODEL_OPTIONS = _config['vllm_model_options']
 MODEL_OPTIONS = OLLAMA_MODEL_OPTIONS if _config['default_model'] == 'ollama' else VLLM_MODEL_OPTIONS
