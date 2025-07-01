@@ -15,6 +15,8 @@ import pdfplumber
 from config import API_CONFIG, logger
 from PIL import Image
 
+import fitz  # pip install pymupdf
+
 
 class VLMExtractor(BaseExtractor):
     SUPPORTED_MIME_TYPES = {
@@ -139,6 +141,20 @@ class VLMExtractor(BaseExtractor):
             
     def _convert_pdf_to_images(self, pdf_data: bytes) -> List[bytes]:
         """安全的PDF转图片实现"""
+        def pdf_to_images(pdf_bytes, dpi=300):
+            doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+            images = []
+            for page in doc:
+                pix = page.get_pixmap(dpi=dpi, colorspace="rgb")
+                img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+                images.append(img)
+            return [self._image_to_bytes(img) for img in images]
+        
+        try:
+            return pdf_to_images(pdf_data)
+        except Exception as e:
+            pass
+
         try:
             images = convert_from_bytes(
                 pdf_data,
